@@ -1,0 +1,82 @@
+Resmî Yazışmalarda Uygulanacak Usul ve Esaslar
+Temel Kurallar (Kamuya Açık Bilgi Özeti)
+
+BÖLÜM 1 — Genel İlkeler
+
+Madde 1 — Resmî yazışmalar; açıklık, doğruluk, tutarlılık ve nezaket ilkelerine uygun yapılır.
+Madde 2 — Yazışmalarda Türkçe kullanılır; gereksiz yabancı sözcüklerden kaçınılır.
+Madde 3 — Her resmî belge; konu, tarih, sayı ve imza unsurlarını taşır.
+Madde 4 — Yazılar, muhatabın yetkili birimine yöneltilir.
+Madde 5 — Belge içeriği, yalnızca gerekli bilgileri kapsar; abartı ve belirsizlikten kaçınılır.
+Madde 6 — Kişisel veriler, ilgili mevzuata uygun korunur.
+Madde 7 — Yazışmalar, kurumun kayıt sistemine işlenir.
+Madde 8 — Elektronik ortamda üretilen belgeler, ıslak imzalı belgelerle aynı hukuki değere sahiptir (e-imza şartlarıyla).
+
+BÖLÜM 2 — Belge Türleri
+
+Madde 9 — Üst yazı: birimler arası veya kurum dışı resmî bildirim için kullanılır.
+Madde 10 — Cevap yazısı: gelen yazıya yanıt niteliğindedir ve ilgi kaydı içerir.
+Madde 11 — Bilgilendirme yazısı: karar gerektirmeyen bilgi aktarımında kullanılır.
+Madde 12 — Olur yazısı: makam onayı gerektiren işlemlerde kullanılır.
+Madde 13 — İç genelge: kurum içi uygulama birliğini sağlar.
+Madde 14 — Tutanak: olay, karar veya işlemin kayıt altına alınması için düzenlenir.
+Madde 15 — Dilekçe ve talep yazıları vatandaş başvurularında kullanılır; kurum cevap yükümlülüğüne tabidir.
+
+BÖLÜM 3 — Format Kuralları
+
+Madde 16 — Belge A4 boyutunda düzenlenir.
+Madde 17 — Kenar boşlukları okunabilirliği bozmayacak şekilde bırakılır.
+Madde 18 — Yazı tipi ve punto, kurum standardına uygun seçilir.
+Madde 19 — Paragraflar mantıksal bütünlük içinde sıralanır.
+Madde 20 — Sayfa numarası birden fazla sayfalı belgelerde kullanılır.
+Madde 21 — Ekler varsa yazının sonunda “Ek:” bölümünde listelenir.
+Madde 22 — Belgede düzeltme yapılacaksa uygun yöntemle kayıt altına alınır; okunaksız karalama yapılmaz.
+
+BÖLÜM 4 — Hitap Şekilleri
+
+Madde 23 — Kurum dışına yazılarda hitap, muhatabın unvanına uygun seçilir.
+Madde 24 — Üst makamlara “arz ederim”, eşit/alt makamlara “rica ederim” ifadesi kullanılır.
+Madde 25 — Vatandaşa yönelik yazılarda nezaket kurallarına riayet edilir.
+Madde 26 — Toplu muhataplarda genel hitap kullanılabilir.
+
+BÖLÜM 5 — İmza Kuralları
+
+Madde 27 — Belge, yetkili kişi tarafından imzalanır.
+Madde 28 — İmza bloğunda ad-soyad ve unvan yer alır.
+Madde 29 — Vekâleten imzada “V.” ibaresi kullanılır.
+Madde 30 — Paraf, hazırlayan ve kontrol eden personeli gösterir.
+Madde 31 — Elektronik imza, ilgili mevzuata uygun atılır.
+
+BÖLÜM 6 — Konu Yazımı
+
+Madde 32 — Konu satırı kısa, açık ve işlemi tanımlayıcı olmalıdır.
+Madde 33 — Konuda gereksiz kısaltma kullanılmaz.
+Madde 34 — Birden fazla konu varsa ana konu öne çıkarılır.
+
+BÖLÜM 7 — Tarih Formatı
+
+Madde 35 — Tarih, gün/ay/yıl biçiminde yazılır (ör. 18/07/2026).
+Madde 36 — Sayı ve tarih, belge kimliğini oluşturur.
+Madde 37 — Cevap yazılarında gelen yazının tarih ve sayısı ilgi olarak belirtilir.
+
+BÖLÜM 8 — Üst Yazı Kuralları
+
+Madde 38 — Üst yazıda kurum ve birim adı başta yer alır.
+Madde 39 — Sayı, konu ve tarih alanları eksiksiz doldurulur.
+Madde 40 — Metin bölümü giriş, gelişme ve sonuç düzeninde yazılır.
+Madde 41 — Sonuç cümlesi talep, bilgi veya gereği belirtir.
+Madde 42 — Dağıtım listesi varsa yazının sonunda gösterilir.
+
+BÖLÜM 9 — Kayıt, Saklama ve Güvenlik
+
+Madde 43 — Gelen ve giden belgeler kayıt numarası ile izlenir.
+Madde 44 — Gizlilik dereceli belgeler ayrı usulle işlenir.
+Madde 45 — Belge saklama süreleri arşiv mevzuatına göre uygulanır.
+Madde 46 — Yetkisiz kişilere belge ve içerik paylaşılmaz.
+
+BÖLÜM 10 — Dil ve Üslup
+
+Madde 47 — Cümleler kısa ve anlaşılır kurulur.
+Madde 48 — Emir kipinden kaçınılır; resmi ve ölçülü üslup tercih edilir.
+Madde 49 — Hukuki dayanak varsa ilgili mevzuat açıkça anılır.
+Madde 50 — Yazım ve noktalama kurallarına uyulur.

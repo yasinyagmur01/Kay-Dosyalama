@@ -1,0 +1,12 @@
+.venv/
+.uv-cache/
+.env
+__pycache__/
+*.pyc
+chroma_db/
+.pytest_cache/
+models/
+node_modules/
+*.egg-info/
+dist/
+build/

@@ -1,0 +1,13 @@
+T.C. ÖRNEK BELEDİYESİ
+İlgili Birim
+
+Sayı : SIKAYET-007
+Konu : Hizmet Aksaması Şikayeti
+Tarih : 18/07/2026
+
+Sayın Yetkili,
+
+İşbu yazımız, hizmet aksaması şikayeti kapsamında hazırlanmış örnek bir şikayet dilekçesi metnidir. Başvuru numarası 7 olup işlemlerin ilgili mevzuat çerçevesinde yürütülmesi hususunda gereğini arz/rica ederim. Başvuruya konu olay/talep; vatandaş veya birim ihtiyacına dayalı olup kayıt altına alınmış örnek veridir. Gerekli incelemenin yapılarak tarafıma/birimimize bilgi verilmesi önem arz etmektedir. Bu metin, sistem testleri için üretilmiş sentetik içeriktir ve gerçek bir kişiye ait değildir. Konuya ilişkin ek belgeler talep halinde sunulacaktır. Sonuç olarak işlemin en kısa sürede sonuçlandırılmasını saygılarımla rica ederim.
+
+Ad Soyad
+Vatandaş / Yetkili

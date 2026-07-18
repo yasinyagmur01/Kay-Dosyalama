@@ -1,0 +1,35 @@
+# KayıDosyalama — TEKNOFEST 2026
+
+# TYDA Proje Kuralları
+
+## Dil ve Stil
+- Python 3.11+
+- Tüm async, await/async def kullan — senkron LLM/IO çağrısı yapma
+- Type hints zorunlu, TypedDict kullan
+- Docstring: tek satır açıklama yeterli
+
+## Mimari Sınırlar
+- LLM çağrıları SADECE agents/ içinde
+- Tool logic SADECE tools/ içinde
+- State mutation yasak — sadece return {"key": value}
+- Ajanlar birbirini import etmez, sadece core/graph.py import eder
+
+## Import Sırası
+1. stdlib
+2. third-party (langgraph, langchain, chromadb...)
+3. local (core., agents., tools.)
+
+## Hata Yönetimi
+- try/except her agent'ta zorunlu
+- Exception fırlatma — error_log'a yaz, validation_status="error" döndür
+- Kullanıcıya Türkçe hata mesajı
+
+## Test
+- Her agent için mock_llm fixture'ı kullan
+- Gerçek API çağrısı olmadan test çalışmalı
+
+## Yasaklar
+- global state kullanma
+- sleep() kullanma (asyncio.sleep bile olsa agent içinde)
+- hardcoded prompt string agent .py içinde
+- print() kullanma — logging modülü kullan

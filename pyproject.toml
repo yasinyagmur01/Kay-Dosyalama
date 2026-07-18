@@ -1,0 +1,54 @@
+[project]
+name = "kayidosyalama"
+version = "0.1.0"
+description = "TEKNOFEST 2026 — Kamu Evrak İşleme Sistemi (Yapay Zeka Dil Ajanları)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-community",
+    "langchain-ollama",
+    "langchain-anthropic",
+    "pydantic-settings",
+    "chromadb>=0.5",
+    "fastapi",
+    "uvicorn",
+    "streamlit",
+    "python-dotenv",
+    "pydantic>=2",
+    "sentence-transformers",
+    "anthropic",
+    "langsmith",
+    "pytest>=8",
+    "pytest-asyncio>=0.24",
+]
+
+[project.optional-dependencies]
+ocr = ["surya-ocr"]
+
+[tool.uv]
+# CUDA wheel'leri disk kotasını aşıyor; torch CPU indeksi kullan
+extra-index-url = ["https://download.pytorch.org/whl/cpu"]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["core", "agents", "tools", "vector_store", "api"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]

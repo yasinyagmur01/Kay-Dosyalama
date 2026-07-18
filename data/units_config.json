@@ -1,0 +1,179 @@
+{
+  "units": [
+    {
+      "id": "insan_kaynaklari",
+      "name": "İnsan Kaynakları ve Eğitim Müdürlüğü",
+      "keywords": ["izin", "personel", "atama", "görevlendirme", "maaş", "özlük", "eğitim"],
+      "document_types": ["dilekce", "talep"],
+      "description": "Personel özlük işleri, izin, atama ve eğitim süreçleri"
+    },
+    {
+      "id": "hukuk",
+      "name": "Hukuk Müşavirliği",
+      "keywords": ["dava", "sözleşme", "mevzuat", "görüş", "itiraz", "hukuki"],
+      "document_types": ["dilekce", "talep", "resmi_yazi"],
+      "description": "Hukuki görüş, dava takibi ve sözleşme inceleme süreçleri"
+    },
+    {
+      "id": "mali_isler",
+      "name": "Mali İşler Müdürlüğü",
+      "keywords": ["ödeme", "bütçe", "fatura", "muhasebe", "hakediş", "tahakkuk"],
+      "document_types": ["talep", "dilekce", "resmi_yazi"],
+      "description": "Bütçe, ödeme, muhasebe ve mali işlem süreçleri"
+    },
+    {
+      "id": "teknik_isler",
+      "name": "Teknik İşler Müdürlüğü",
+      "keywords": ["bakım", "onarım", "proje", "ihale", "keşif", "yapım"],
+      "document_types": ["talep", "sikayet", "resmi_yazi"],
+      "description": "Yapım, bakım-onarım ve teknik proje süreçleri"
+    },
+    {
+      "id": "arsiv",
+      "name": "Arşiv ve Dokümantasyon Müdürlüğü",
+      "keywords": ["arşiv", "dosya", "saklama", "imha", "belge", "evrak"],
+      "document_types": ["talep", "bilgi_talebi"],
+      "description": "Belge arşivleme, saklama ve imha süreçleri"
+    },
+    {
+      "id": "bilgi_islem",
+      "name": "Bilgi İşlem Müdürlüğü",
+      "keywords": ["yazılım", "ağ", "erişim", "sistem", "şifre", "bilişim"],
+      "document_types": ["talep", "sikayet", "bilgi_talebi"],
+      "description": "Bilişim altyapısı, sistem erişimi ve yazılım destek süreçleri"
+    },
+    {
+      "id": "idari_isler",
+      "name": "İdari İşler Müdürlüğü",
+      "keywords": ["yazışma", "protokol", "toplantı", "organizasyon", "idari"],
+      "document_types": ["resmi_yazi", "talep", "bilgilendirme"],
+      "description": "İdari yazışma, protokol ve organizasyon süreçleri"
+    },
+    {
+      "id": "denetim",
+      "name": "İç Denetim Birimi",
+      "keywords": ["denetim", "inceleme", "uygunsuzluk", "rapor", "kontrol"],
+      "document_types": ["sikayet", "talep", "resmi_yazi"],
+      "description": "İç denetim, inceleme ve uygunluk kontrol süreçleri"
+    },
+    {
+      "id": "strateji_gelistirme",
+      "name": "Strateji Geliştirme Müdürlüğü",
+      "keywords": ["strateji", "plan", "performans", "hedef", "analiz"],
+      "document_types": ["talep", "resmi_yazi", "bilgi_talebi"],
+      "description": "Stratejik planlama, performans ve hedef izleme süreçleri"
+    },
+    {
+      "id": "destek_hizmetleri",
+      "name": "Destek Hizmetleri Müdürlüğü",
+      "keywords": ["temizlik", "ulaşım", "yemek", "lojistik", "malzeme"],
+      "document_types": ["talep", "sikayet"],
+      "description": "Lojistik, ulaşım ve genel destek hizmetleri"
+    },
+    {
+      "id": "basin_halkla_iliskiler",
+      "name": "Basın ve Halkla İlişkiler Müdürlüğü",
+      "keywords": ["basın", "duyuru", "iletişim", "medya", "sosyal medya"],
+      "document_types": ["talep", "bilgilendirme", "resmi_yazi"],
+      "description": "Basın açıklamaları, duyuru ve halkla ilişkiler süreçleri"
+    },
+    {
+      "id": "satin_alma",
+      "name": "Satın Alma ve İhale Müdürlüğü",
+      "keywords": ["satın alma", "ihale", "teklif", "tedarik", "malzeme alımı"],
+      "document_types": ["talep", "resmi_yazi", "dilekce"],
+      "description": "Satın alma, ihale ve tedarik süreçleri"
+    },
+    {
+      "id": "yapim_emlak",
+      "name": "Yapım ve Emlak Müdürlüğü",
+      "keywords": ["emlak", "taşınmaz", "kira", "kamulaştırma", "tapu"],
+      "document_types": ["dilekce", "talep", "sikayet"],
+      "description": "Taşınmaz, kira ve emlak yönetim süreçleri"
+    },
+    {
+      "id": "cevre_koruma",
+      "name": "Çevre Koruma ve Kontrol Müdürlüğü",
+      "keywords": ["çevre", "atık", "kirlilik", "denetim", "izin"],
+      "document_types": ["sikayet", "talep", "dilekce"],
+      "description": "Çevre koruma, atık yönetimi ve kontrol süreçleri"
+    },
+    {
+      "id": "zabita",
+      "name": "Zabıta Müdürlüğü",
+      "keywords": ["zabıta", "işgaliye", "denetim", "ceza", "şikayet"],
+      "document_types": ["sikayet", "dilekce", "talep"],
+      "description": "Zabıta denetimi, işgaliye ve şikayet süreçleri"
+    },
+    {
+      "id": "imar_sehircilik",
+      "name": "İmar ve Şehircilik Müdürlüğü",
+      "keywords": ["imar", "ruhsat", "yapı", "plan", "iskan"],
+      "document_types": ["dilekce", "talep", "sikayet"],
+      "description": "İmar planı, ruhsat ve şehircilik süreçleri"
+    },
+    {
+      "id": "fen_isleri",
+      "name": "Fen İşleri Müdürlüğü",
+      "keywords": ["yol", "kaldırım", "asfalt", "altyapı", "kanalizasyon"],
+      "document_types": ["sikayet", "talep", "dilekce"],
+      "description": "Yol, kaldırım ve altyapı fen işleri süreçleri"
+    },
+    {
+      "id": "park_bahceler",
+      "name": "Park ve Bahçeler Müdürlüğü",
+      "keywords": ["park", "ağaç", "yeşil alan", "peyzaj", "sulama"],
+      "document_types": ["sikayet", "talep", "dilekce"],
+      "description": "Park, yeşil alan ve peyzaj bakım süreçleri"
+    },
+    {
+      "id": "kultur_sosyal",
+      "name": "Kültür ve Sosyal İşler Müdürlüğü",
+      "keywords": ["kültür", "etkinlik", "sosyal yardım", "kurs", "sanat"],
+      "document_types": ["talep", "dilekce", "bilgilendirme"],
+      "description": "Kültürel etkinlik ve sosyal hizmet süreçleri"
+    },
+    {
+      "id": "saglik_isleri",
+      "name": "Sağlık İşleri Müdürlüğü",
+      "keywords": ["sağlık", "hijyen", "muayene", "aşı", "iş yeri hekimi"],
+      "document_types": ["talep", "sikayet", "dilekce"],
+      "description": "Sağlık hizmetleri ve hijyen denetim süreçleri"
+    },
+    {
+      "id": "trafik",
+      "name": "Ulaşım ve Trafik Müdürlüğü",
+      "keywords": ["trafik", "otopark", "sinyalizasyon", "ulaşım", "yol güvenliği"],
+      "document_types": ["sikayet", "talep", "dilekce"],
+      "description": "Trafik düzenleme, otopark ve ulaşım süreçleri"
+    },
+    {
+      "id": "itfaiye",
+      "name": "İtfaiye Müdürlüğü",
+      "keywords": ["itfaiye", "yangın", "acil", "güvenlik", "tatbikat"],
+      "document_types": ["talep", "sikayet", "resmi_yazi"],
+      "description": "Yangın güvenliği ve acil müdahale süreçleri"
+    },
+    {
+      "id": "veteriner",
+      "name": "Veteriner İşleri Müdürlüğü",
+      "keywords": ["hayvan", "veteriner", "aşı", "barınak", "sahipsiz hayvan"],
+      "document_types": ["sikayet", "talep", "dilekce"],
+      "description": "Hayvan sağlığı ve veteriner hizmet süreçleri"
+    },
+    {
+      "id": "mezmur_mezarlik",
+      "name": "Mezarlıklar Müdürlüğü",
+      "keywords": ["mezarlık", "defin", "mezar", "vefat", "yer tahsisi"],
+      "document_types": ["talep", "dilekce"],
+      "description": "Mezarlık yer tahsisi ve defin işlemleri"
+    },
+    {
+      "id": "ozel_kalem",
+      "name": "Özel Kalem Müdürlüğü",
+      "keywords": ["makam", "randevu", "özel kalem", "protokol", "başvuru"],
+      "document_types": ["dilekce", "talep", "resmi_yazi"],
+      "description": "Makam yazışmaları, randevu ve özel kalem süreçleri"
+    }
+  ]
+}

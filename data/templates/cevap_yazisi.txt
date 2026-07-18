@@ -1,0 +1,18 @@
+T.C.
+{kurum_adi}
+{birim_adi}
+
+Sayı   : {sayi}
+Konu  : {konu}
+Tarih : {tarih}
+
+{hitap}
+
+İlgi : {ilgi_yazisi}
+
+{icerik}
+
+Bilgilerinizi rica ederim.
+
+{imzalayan}
+{unvan}
