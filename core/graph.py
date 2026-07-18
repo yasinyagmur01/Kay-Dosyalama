@@ -11,7 +11,7 @@ from agents.drafter_agent import DrafterAgent
 from agents.mevzuat_agent import MevzuatAgent
 from agents.ocr_agent import OCRAgent
 from agents.routing_agent import RoutingAgent
-from agents.validator_agent import ValidatorAgent
+from agents.validator_agent import ValidatorAgent, apply_user_responses
 from core.state import DocumentState, create_initial_state
 
 # Agent instance'ları (testlerde build_graph / modül override ile değiştirilebilir)
@@ -118,10 +118,16 @@ async def run_pipeline(
     input_type: str = "text",
     user_responses: dict | None = None,
 ) -> DocumentState:
-    """Tam pipeline'ı çalıştırır; user_responses varsa state'e yazar."""
+    """Tam pipeline'ı çalıştırır; user_responses varsa entity'lere uygular."""
     state = create_initial_state(raw_input, input_type)
     if user_responses:
-        state = {**state, "user_responses": user_responses}
+        cleaned = {
+            str(key): str(value).strip()
+            for key, value in user_responses.items()
+            if value is not None and str(value).strip()
+        }
+        if cleaned:
+            state = {**state, **apply_user_responses(state, cleaned)}
     graph = get_graph()
     result = await graph.ainvoke(state)
     return result  # type: ignore[return-value]

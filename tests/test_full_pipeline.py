@@ -186,6 +186,28 @@ async def test_missing_field_then_continue() -> None:
 
 
 @pytest.mark.asyncio
+async def test_hitl_user_responses_complete_pipeline() -> None:
+    """HITL yanıtlarıyla eksik alanlar kapanır; taslak üretilir."""
+    _install_full_mocked_graph(INCOMPLETE_JSON)
+    result = await run_pipeline(
+        "Müdürlüğe başvuruyorum.",
+        "text",
+        user_responses={
+            "tarih": "18/07/2026",
+            "kisi": "Ayşe Yılmaz",
+            "konu": "Yıllık izin",
+        },
+    )
+
+    assert "tarih" not in (result.get("missing_fields") or [])
+    assert result["extracted_entities"].get("tarih") == "18/07/2026"
+    assert result["extracted_entities"].get("kisi") == "Ayşe Yılmaz"
+    assert result["draft_text"]
+    assert result["validation_status"] in ("complete", "needs_input", "error")
+    assert "validator" not in result["processing_time"]
+
+
+@pytest.mark.asyncio
 async def test_sikayet_gets_cevap_yazisi(sample_sikayet_text: str) -> None:
     """Şikayet için draft_type cevap_yazisi (veya tutarlı seçim) olmalı."""
     _install_full_mocked_graph(
