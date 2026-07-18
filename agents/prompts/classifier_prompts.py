@@ -5,12 +5,18 @@ Görevin: Gelen evrakı oku, türünü belirle ve gerekli bilgileri çıkar.
 Kısıtlar: SADECE geçerli JSON döndür. Açıklama, markdown veya ek metin ekleme.
 
 Evrak tipleri (document_type):
-- dilekce
-- talep
-- sikayet
-- bilgi_talebi
-- resmi_yazi
-- diger
+- dilekce: izin, refakat, "arz ederim" içeren kişisel başvurular
+- talep: hizmet/işlem talebi ("talep ediyorum/ediyoruz", "rica ederiz")
+- sikayet: aksaklık, onarım, gürültü, ödenmeyen ücret, mağduriyet
+- bilgi_talebi: 4982 sayılı Kanun, bilgi edinme birimi başvuruları
+- resmi_yazi: T.C. antetli, Sayı/Konu satırlı kurumlar arası yazılar
+- diger: yukarıdakilere uymayanlar
+
+Ayırt etme:
+- "T.C." + "Sayı:" varsa öncelik resmi_yazi
+- "4982" veya "bilgi edinme" varsa bilgi_talebi
+- İzin/refakat + arz ederim → dilekce
+- Bozuk yol, gürültü, ödenmeyen ücret → sikayet (kelime "şikayet" olmasa da)
 """
 
 USER_PROMPT = """Aşağıdaki kamu evrakını analiz et.
@@ -44,23 +50,67 @@ confidence_score 0.0 ile 1.0 arasında olmalıdır.
 DOCUMENT_TYPE_DESCRIPTIONS: dict[str, dict[str, str | list[str]]] = {
     "dilekce": {
         "description": "Vatandaş veya personelin resmi talep/izin için yazdığı dilekçe.",
-        "keywords": ["dilekçe", "arz ederim", "gereğini arz", "izin", "başvuru"],
+        "keywords": [
+            "dilekçe",
+            "arz ederim",
+            "gereğini saygılarımla arz",
+            "yıllık izin",
+            "refakat izni",
+            "izin kullanmak",
+            "belgeler ektedir",
+        ],
     },
     "talep": {
         "description": "Belirli bir hizmet, belge veya işlem talebi içeren yazı.",
-        "keywords": ["talep", "rica ederim", "talep ederiz", "istemekteyiz"],
+        "keywords": [
+            "talep ediyoruz",
+            "talep ediyorum",
+            "rica ederiz",
+            "rica ederim",
+            "istemekteyiz",
+            "erişimi talep",
+            "şerhinin kaldırılmasını",
+        ],
     },
     "sikayet": {
         "description": "Bir aksaklık, mağduriyet veya şikayet bildirimi.",
-        "keywords": ["şikayet", "şikâyet", "mağdur", "şikayette bulun"],
+        "keywords": [
+            "şikayet",
+            "şikâyet",
+            "mağdur",
+            "şikayette bulun",
+            "bozuk asfalt",
+            "onarım yapılmasını",
+            "gürültü",
+            "denetim yapılmasını",
+            "ödenmemiştir",
+            "ivedilikle çözüm",
+            "trafik kazaları",
+        ],
     },
     "bilgi_talebi": {
         "description": "Bilgi edinme veya açıklama isteme amaçlı yazı.",
-        "keywords": ["bilgi talebi", "bilgi edinme", "açıklama rica", "4982"],
+        "keywords": [
+            "bilgi talebi",
+            "bilgi edinme",
+            "açıklama rica",
+            "4982",
+            "kanun kapsamında talep",
+            "bilgi edinme birimi",
+        ],
     },
     "resmi_yazi": {
         "description": "Kurumlar arası resmi yazışma / üst yazı.",
-        "keywords": ["resmi yazı", "üst yazı", "ilgi", "gereği", "makam"],
+        "keywords": [
+            "t.c.",
+            "sayı:",
+            "konu:",
+            "resmi yazı",
+            "üst yazı",
+            "katılımı zorunludur",
+            "ek ödenek",
+            "genel müdür",
+        ],
     },
     "diger": {
         "description": "Yukarıdaki kategorilere uymayan diğer evraklar.",

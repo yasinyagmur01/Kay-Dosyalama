@@ -63,7 +63,8 @@ class RoutingAgent(BaseAgent):
         konu = str(entities.get("konu", "") or "").lower()
         talep = str(entities.get("talep", "") or "").lower()
         summary = str(state.get("summary", "") or "").lower()
-        search_text = f"{konu} {talep} {summary}"
+        raw = str(state.get("raw_text") or state.get("raw_input") or "").lower()
+        search_text = f"{konu} {talep} {summary} {raw}"
         document_type = str(state.get("document_type", "") or "").lower()
 
         best_unit: dict[str, Any] | None = None
@@ -88,7 +89,7 @@ class RoutingAgent(BaseAgent):
                 best_score = score
                 best_unit = unit
 
-        if best_unit is None or best_score < 2:
+        if best_unit is None or best_score < 1:
             return None
 
         alternatives = [

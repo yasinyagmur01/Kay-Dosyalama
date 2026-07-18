@@ -42,13 +42,10 @@ class MevzuatAgent(BaseAgent):
         try:
             ranked = await self._search_and_rank(query, document_type, konu)
         except Exception as exc:
-            logger.error("Mevzuat araması başarısız: %s", exc)
-            return {
+            logger.warning("Mevzuat araması başarısız, temel kurallar kullanılıyor: %s", exc)
+            ranked = {
                 "relevant_regulations": [],
                 "writing_rules": list(BASE_WRITING_RULES),
-                "error_log": state.get("error_log", [])
-                + [f"mevzuat: {exc}"],
-                "validation_status": "error",
             }
 
         writing_rules = list(BASE_WRITING_RULES)
@@ -99,14 +96,18 @@ class MevzuatAgent(BaseAgent):
             SystemMessage(content=SYSTEM_PROMPT),
             HumanMessage(content=user_prompt),
         ]
-        response = await self.llm.ainvoke(messages)
-        content = response.content if hasattr(response, "content") else str(response)
-        if isinstance(content, list):
-            content = "".join(
-                part.get("text", str(part)) if isinstance(part, dict) else str(part)
-                for part in content
-            )
-        return self._parse_llm_response(str(content), hits)
+        try:
+            response = await self.llm.ainvoke(messages)
+            content = response.content if hasattr(response, "content") else str(response)
+            if isinstance(content, list):
+                content = "".join(
+                    part.get("text", str(part)) if isinstance(part, dict) else str(part)
+                    for part in content
+                )
+            return self._parse_llm_response(str(content), hits)
+        except Exception as exc:
+            logger.warning("LLM rerank başarısız, arama sonuçları kullanılıyor: %s", exc)
+            return self._parse_llm_response("{}", hits)
 
     def _parse_llm_response(
         self,
