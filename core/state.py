@@ -46,10 +46,12 @@ class DocumentState(TypedDict):
 
 def create_initial_state(raw_input: str, input_type: str) -> DocumentState:
     """Pipeline başlangıç state'ini oluşturur."""
+    # OCR henüz yokken text girdilerinde raw_input → raw_text
+    initial_text = raw_input if input_type == "text" else ""
     return DocumentState(
         raw_input=raw_input,
         input_type=input_type,  # type: ignore[typeddict-item]
-        raw_text="",
+        raw_text=initial_text,
         layout_metadata={},
         document_type="",
         extracted_entities={},
