@@ -1102,7 +1102,7 @@ wheels = [
 
 [[package]]
 name = "kayidosyalama"
-version = "0.1.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "anthropic" },
@@ -1122,7 +1122,7 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "sentence-transformers" },
     { name = "streamlit" },
-    { name = "uvicorn" },
+    { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.optional-dependencies]
@@ -1150,7 +1150,7 @@ requires-dist = [
     { name = "sentence-transformers" },
     { name = "streamlit" },
     { name = "surya-ocr", marker = "extra == 'ocr'" },
-    { name = "uvicorn" },
+    { name = "uvicorn", extras = ["standard"] },
 ]
 provides-extras = ["ocr"]
 

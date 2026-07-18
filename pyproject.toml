@@ -1,6 +1,6 @@
 [project]
 name = "kayidosyalama"
-version = "0.1.0"
+version = "1.0.0"
 description = "TEKNOFEST 2026 — Kamu Evrak İşleme Sistemi (Yapay Zeka Dil Ajanları)"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -14,7 +14,7 @@ dependencies = [
     "pydantic-settings",
     "chromadb>=0.5",
     "fastapi",
-    "uvicorn",
+    "uvicorn[standard]",
     "streamlit",
     "python-dotenv",
     "pydantic>=2",
