@@ -107,7 +107,23 @@ class MevzuatAgent(BaseAgent):
             return self._parse_llm_response(str(content), hits)
         except Exception as exc:
             logger.warning("LLM rerank başarısız, arama sonuçları kullanılıyor: %s", exc)
-            return self._parse_llm_response("{}", hits)
+            return self._fallback_from_hits(hits)
+
+    def _fallback_from_hits(self, hits: list[dict[str, Any]]) -> dict[str, Any]:
+        """LLM yokken Chroma arama sonuçlarından mevzuat listesi üretir."""
+        fallback_regs = [
+            {
+                "title": hit.get("source", "mevzuat"),
+                "article": hit.get("content", "")[:200],
+                "relevance_score": float(hit.get("relevance", 0.0)),
+                "summary": hit.get("content", "")[:160],
+            }
+            for hit in hits[:3]
+        ]
+        return {
+            "relevant_regulations": fallback_regs,
+            "writing_rules": list(BASE_WRITING_RULES),
+        }
 
     def _parse_llm_response(
         self,
@@ -137,6 +153,8 @@ class MevzuatAgent(BaseAgent):
                         "summary": str(item.get("summary", "") or ""),
                     }
                 )
+            if not normalized:
+                return self._fallback_from_hits(hits)
             rules = data.get("writing_rules") or []
             if not isinstance(rules, list):
                 rules = []
@@ -146,19 +164,7 @@ class MevzuatAgent(BaseAgent):
             }
         except Exception as exc:
             logger.warning("Mevzuat JSON parse hatası, fallback kullanılıyor: %s", exc)
-            fallback_regs = [
-                {
-                    "title": hit.get("source", "mevzuat"),
-                    "article": hit.get("content", "")[:200],
-                    "relevance_score": float(hit.get("relevance", 0.0)),
-                    "summary": hit.get("content", "")[:160],
-                }
-                for hit in hits[:3]
-            ]
-            return {
-                "relevant_regulations": fallback_regs,
-                "writing_rules": list(BASE_WRITING_RULES),
-            }
+            return self._fallback_from_hits(hits)
 
 
 def _extract_json_object(text: str) -> str:

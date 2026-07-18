@@ -127,6 +127,33 @@ uv run python scripts/evaluate.py
 
 Sonuçlar `data/evaluation_results.json` dosyasına yazılır.
 
+## Jüri Demo
+
+Sunum checklist’i, canlı senaryolar ve jüri Q&A için:
+
+→ [`docs/JURY_DEMO.md`](docs/JURY_DEMO.md)
+
+Hızlı başlangıç:
+
+```bash
+uv run python scripts/build_vector_store.py
+uv run uvicorn api.main:app --port 8000
+uv run streamlit run ui/streamlit_app.py --server.port 8501
+# yedek terminal demo
+uv run python scripts/demo_runner.py
+```
+
+Not: Ollama yokken pipeline kural tabanlı fallback ile çalışır (`/api/v1/health` → `degraded`). Jüri öncesi:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+export OLLAMA_MODELS="$HOME/.local/share/ollama/models"
+ollama serve &
+ollama pull qwen2.5:7b   # bir kez
+```
+
+Son ölçüm (yerel Qwen2.5:7B): talep↔bilgi_talebi karışıklığı giderildi (10/10 talep doğrulandı); taslak ve yönlendirme önceki koşuda %100. Jüri öncesi `uv run python scripts/evaluate.py` ile taze skor alın.
+
 ## Lisans
 
 Apache 2.0

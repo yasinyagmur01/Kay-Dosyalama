@@ -6,17 +6,19 @@ Kısıtlar: SADECE geçerli JSON döndür. Açıklama, markdown veya ek metin ek
 
 Evrak tipleri (document_type):
 - dilekce: izin, refakat, "arz ederim" içeren kişisel başvurular
-- talep: hizmet/işlem talebi ("talep ediyorum/ediyoruz", "rica ederiz")
+- talep: hizmet/işlem/belge talebi ("talep ediyorum/ediyoruz", "rica ederiz", Sayı:TALEP-...)
 - sikayet: aksaklık, onarım, gürültü, ödenmeyen ücret, mağduriyet
-- bilgi_talebi: 4982 sayılı Kanun, bilgi edinme birimi başvuruları
+- bilgi_talebi: YALNIZCA 4982 sayılı Kanun veya açıkça "bilgi edinme" başvurusu
 - resmi_yazi: T.C. antetli, Sayı/Konu satırlı kurumlar arası yazılar
 - diger: yukarıdakilere uymayanlar
 
-Ayırt etme:
-- "T.C." + "Sayı:" varsa öncelik resmi_yazi
-- "4982" veya "bilgi edinme" varsa bilgi_talebi
+Ayırt etme (öncelik sırası):
+- "4982" veya "bilgi edinme birimi/hakkı" → bilgi_talebi
+- Sayı satırında TALEP- veya Konu'da "Bilgi Ve Belge Talebi" (4982 YOK) → talep
+- "bilgi talebi" tek başına yetmez; 4982/bilgi edinme yoksa talep tercih et
 - İzin/refakat + arz ederim → dilekce
-- Bozuk yol, gürültü, ödenmeyen ücret → sikayet (kelime "şikayet" olmasa da)
+- Bozuk yol, gürültü, ödenmeyen ücret → sikayet
+- "T.C." + "Sayı:" tek başına resmi_yazi demek değildir; içeriğe bak
 """
 
 USER_PROMPT = """Aşağıdaki kamu evrakını analiz et.

@@ -60,6 +60,20 @@ def _fallback_result() -> dict[str, Any]:
     }
 
 
+def _refine_document_type(text: str, doc_type: str) -> str:
+    """LLM çıktısını kural tabanlı ince ayarla düzeltir."""
+    lowered = text.casefold()
+    has_4982 = "4982" in lowered or "bilgi edinme" in lowered
+    if re.search(r"sayı\s*:\s*talep-", lowered) and not has_4982:
+        return "talep"
+    if re.search(r"sayı\s*:\s*bilgi_talebi-", lowered) or has_4982:
+        return "bilgi_talebi"
+    if doc_type == "bilgi_talebi" and not has_4982:
+        if "bilgi ve belge talebi" in lowered or "talep ediyorum" in lowered:
+            return "talep"
+    return doc_type
+
+
 def _heuristic_classify(text: str) -> dict[str, Any]:
     """LLM yokken anahtar kelime ve kalıplarla sınıflandırma yapar."""
     lowered = text.casefold()
@@ -79,7 +93,11 @@ def _heuristic_classify(text: str) -> dict[str, Any]:
     if re.search(r"\bt\.?\s*c\.?\b", lowered) and "sayı:" in lowered:
         scores["resmi_yazi"] += 3.0
     if "4982" in lowered or "bilgi edinme" in lowered:
-        scores["bilgi_talebi"] += 2.0
+        scores["bilgi_talebi"] += 3.0
+    elif re.search(r"sayı\s*:\s*talep-", lowered) or "bilgi ve belge talebi" in lowered:
+        scores["talep"] += 3.0
+    if re.search(r"sayı\s*:\s*bilgi_talebi-", lowered):
+        scores["bilgi_talebi"] += 3.0
     if any(k in lowered for k in ("arz ederim", "yıllık izin", "refakat izni")):
         scores["dilekce"] += 2.0
     if any(
@@ -264,8 +282,13 @@ class ClassifierAgent(BaseAgent):
             state.get("user_responses") or {},
         )
 
+        doc_type = _refine_document_type(
+            raw_text,
+            str(parsed.get("document_type", "diger") or "diger"),
+        )
+
         result: dict[str, Any] = {
-            "document_type": parsed.get("document_type", "diger"),
+            "document_type": doc_type,
             "confidence_score": confidence,
             "extracted_entities": entities,
             "missing_fields": missing,
