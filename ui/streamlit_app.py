@@ -7,6 +7,7 @@ import logging
 import os
 import sys
 import tempfile
+import threading
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +27,7 @@ from agents.validator_agent import ValidatorAgent
 from core import graph as graph_module
 from core.graph import reset_graph, run_pipeline
 from core.llm_client import get_llm
+from data.demo_samples import SAMPLE_DOCS
 
 logger = logging.getLogger("tyda.ui.streamlit")
 
@@ -101,22 +103,41 @@ def _apply_model(choice_label: str) -> None:
     st.session_state["_applied_model"] = model_key
 
 
+_pipeline_loop: asyncio.AbstractEventLoop | None = None
+_pipeline_loop_lock = threading.Lock()
+
+
+def _get_pipeline_loop() -> asyncio.AbstractEventLoop:
+    """Streamlit/uvloop dışında kalıcı asyncio loop tutar."""
+    global _pipeline_loop
+    with _pipeline_loop_lock:
+        if _pipeline_loop is not None and _pipeline_loop.is_running():
+            return _pipeline_loop
+
+        loop = asyncio.new_event_loop()
+
+        def _run_forever() -> None:
+            asyncio.set_event_loop(loop)
+            loop.run_forever()
+
+        thread = threading.Thread(target=_run_forever, daemon=True, name="pipeline-loop")
+        thread.start()
+        _pipeline_loop = loop
+        return loop
+
+
 def _run_pipeline(
     raw_input: str,
     input_type: str,
     user_responses: dict[str, str] | None = None,
 ) -> dict[str, Any]:
-    """run_pipeline'ı asyncio.run ile çalıştırır."""
-    try:
-        import nest_asyncio
-
-        nest_asyncio.apply()
-    except ImportError:
-        pass
-    result = asyncio.run(
-        run_pipeline(raw_input, input_type, user_responses)
+    """run_pipeline'ı Streamlit thread'inden güvenli şekilde çalıştırır."""
+    loop = _get_pipeline_loop()
+    future = asyncio.run_coroutine_threadsafe(
+        run_pipeline(raw_input, input_type, user_responses),
+        loop,
     )
-    return dict(result)
+    return dict(future.result())
 
 
 def _entities_dataframe(entities: dict[str, Any]) -> pd.DataFrame:
@@ -286,11 +307,19 @@ st.title("KayıDosyalama — Kamu Evrak İşleme")
 col_in, col_out = st.columns([5, 7])
 
 with col_in:
+    ornek_etiketler = ["(Manuel yaz / yapıştır)"] + list(SAMPLE_DOCS.keys())
+    secim = st.selectbox("Deneme evrakı (10 örnek)", ornek_etiketler)
+    if secim != "(Manuel yaz / yapıştır)":
+        if st.button("Örneği metin kutusuna yükle", use_container_width=True):
+            st.session_state["draft_input"] = SAMPLE_DOCS[secim]
+            st.rerun()
+
     with st.form("input_form"):
         metin = st.text_area(
             "Evrak metni",
             height=280,
             placeholder="Dilekçe, şikayet, talep...",
+            value=st.session_state.get("draft_input", ""),
         )
         dosya = st.file_uploader(
             "veya PDF yükle",

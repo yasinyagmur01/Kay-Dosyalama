@@ -1,0 +1,130 @@
+"""Streamlit / jüri denemesi için 10 örnek evrak metni."""
+
+from __future__ import annotations
+
+SAMPLE_DOCS: dict[str, str] = {
+    "1 · Dilekçe — Yıllık izin (tam)": (
+        "T.C. ANKARA BÜYÜKŞEHİR BELEDİYESİ\n"
+        "Personel ve Eğitim Dairesi Başkanlığı\n\n"
+        "Sayı : 2026/PERS-1847\n"
+        "Konu : Yıllık izin talebi\n"
+        "Tarih : 18/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "Ben Ayşe Yılmaz, Personel ve Eğitim Dairesi Başkanlığı bünyesinde "
+        "memur olarak görev yapmaktayım. 657 sayılı Devlet Memurları Kanunu "
+        "uyarınca hak ettiğim yıllık iznimi kullanmak istiyorum. İzin "
+        "tarihlerim 04/08/2026 ile 22/08/2026 arasındadır. Toplam on beş "
+        "iş günü talep etmekteyim. Görev yerim Çankaya hizmet binasıdır. "
+        "İşbu dilekçem ile yıllık izin talebimin onaylanmasını saygılarımla "
+        "arz ederim.\n\n"
+        "Ayşe Yılmaz\nSicil No: 12345"
+    ),
+    "2 · Şikayet — Yol çukuru (HITL: tarih eksik)": (
+        "T.C. İSTANBUL BÜYÜKŞEHİR BELEDİYESİ\n"
+        "Başvuru Sahibi : Hasan Demir\n"
+        "Adres : Kadıköy / İstanbul\n"
+        "Telefon : 0533 444 55 66\n\n"
+        "Konu : Yol bozulması ve çukur şikayeti\n\n"
+        "Sayın Yetkili,\n\n"
+        "Mahallemizde ana cadde üzerindeki asfalt bozulmuş, derin çukurlar "
+        "oluşmuştur. Yağmur sonrası trafik tehlike altındadır. Acilen yol "
+        "onarımı ve uyarı tabelası talep ederim. Kesin tarih belgede "
+        "yoktur; sorun haftalardır sürmektedir.\n\n"
+        "Hasan Demir"
+    ),
+    "3 · Bilgi talebi — 4982 sayılı Kanun": (
+        "T.C. İZMİR VALİLİĞİ\n"
+        "Bilgi Edinme Birimi\n\n"
+        "Sayı : 2026/BE-0921\n"
+        "Konu : Bilgi erişim talebi\n"
+        "Tarih : 15/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "4982 sayılı Bilgi Edinme Hakkı Kanunu kapsamında, Bornova "
+        "ilçesinde 2025 yılında tamamlanan park projelerinin adları, "
+        "bütçeleri ve tamamlanma tarihlerinin tarafıma e-posta ile "
+        "iletilmesini talep ederim.\n\n"
+        "Elif Kara\n"
+        "elif.kara@ornek.gov.tr\n"
+        "0532 777 88 99"
+    ),
+    "4 · Talep — İmar durumu belgesi": (
+        "T.C. BURSA BÜYÜKŞEHİR BELEDİYESİ\n"
+        "İmar ve Şehircilik Müdürlüğü\n\n"
+        "Sayı : TALEP-2026-044\n"
+        "Konu : İmar durumu belgesi talebi\n"
+        "Tarih : 10/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "Nilüfer ilçesi, 123 ada 45 parsel sayılı taşınmaza ait güncel "
+        "imar durumu belgesinin düzenlenerek tarafıma verilmesi hususunda "
+        "gereğini arz/rica ederim.\n\n"
+        "Mehmet Özkan\n"
+        "T.C. 11122233344"
+    ),
+    "5 · Şikayet — Gürültü / işyeri": (
+        "T.C. ANKARA ÇANKAYA BELEDİYESİ\n"
+        "Zabıta Müdürlüğü\n\n"
+        "Tarih : 12/07/2026\n"
+        "Konu : Gece gürültüsü şikayeti\n\n"
+        "Sayın Yetkili,\n\n"
+        "Kızılay Mahallesi'nde bulunan eğlence mekânı gece 01.00'den "
+        "sonra yüksek sesle müzik yaparak mahalle sakinlerini mağdur "
+        "etmektedir. Denetim yapılmasını ve ivedilikle çözüm "
+        "üretilmesini saygılarımla rica ederim.\n\n"
+        "Zeynep Arslan\n"
+        "Çankaya / Ankara"
+    ),
+    "6 · Dilekçe — Refakat izni": (
+        "T.C. SAĞLIK BAKANLIĞI\n"
+        "Ankara Şehir Hastanesi\n\n"
+        "Sayı : 2026/IK-551\n"
+        "Konu : Refakat izni dilekçesi\n"
+        "Tarih : 08/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "Ben Fatma Kılıç, hemşire olarak görev yapmaktayım. Annemin "
+        "ameliyatı nedeniyle 657 sayılı Kanun uyarınca 20/07/2026 - "
+        "27/07/2026 tarihleri arasında refakat izni kullanmak "
+        "istiyorum. Gereğini saygılarımla arz ederim.\n\n"
+        "Fatma Kılıç\nSicil: 77881"
+    ),
+    "7 · Resmî yazı — Kurumlar arası": (
+        "T.C. ANKARA VALİLİĞİ\n"
+        "İl Afet ve Acil Durum Müdürlüğü\n\n"
+        "Sayı : 2026/AFAD-112\n"
+        "Konu : Tatbikat katılımı\n"
+        "Tarih : 05/07/2026\n\n"
+        "İlgi : 02/07/2026 tarihli ve 2026/BB-90 sayılı yazınız.\n\n"
+        "İlgi yazınızda bildirilen 25/07/2026 tarihli deprem tatbikatına "
+        "müdürlüğümüz personelinin katılımı uygun görülmüştür. "
+        "Katılımcı listesi ekte sunulmuştur.\n\n"
+        "Bilgilerinizi ve gereğini arz ederim.\n\n"
+        "İl Müdürü\nAhmet Yıldız"
+    ),
+    "8 · Talep — Vergi levhası / belge": (
+        "T.C. GELİR İDARESİ BAŞKANLIĞI\n"
+        "Çankaya Vergi Dairesi\n\n"
+        "Sayı : TALEP-2026-118\n"
+        "Konu : Vergi levhası sureti talebi\n"
+        "Tarih : 14/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "Vergi kimlik numaram 1234567890 olan mükellefiyetime ait güncel "
+        "vergi levhası suretinin düzenlenmesini talep ediyorum. "
+        "Belgenin elden teslimini rica ederim.\n\n"
+        "Ali Vural"
+    ),
+    "9 · Bilgi talebi — İhale bilgisi (4982)": (
+        "T.C. KONYA BÜYÜKŞEHİR BELEDİYESİ\n"
+        "Bilgi Edinme Birimi\n\n"
+        "Sayı : BILGI_TALEBI-2026-033\n"
+        "Konu : İhale sonuç bilgisi\n"
+        "Tarih : 11/07/2026\n\n"
+        "Sayın Yetkili,\n\n"
+        "4982 sayılı Kanun kapsamında, 2025 yılı yol yapım ihalelerine "
+        "ilişkin yüklenici unvanları ve sözleşme bedellerinin listesinin "
+        "tarafıma elektronik ortamda iletilmesini talep ederim.\n\n"
+        "Canan Demir\n"
+        "canan.demir@mail.com"
+    ),
+    "10 · Eksik kısa metin — HITL denemesi": (
+        "Yol çukuru şikayetim var. Hasan Demir."
+    ),
+}
